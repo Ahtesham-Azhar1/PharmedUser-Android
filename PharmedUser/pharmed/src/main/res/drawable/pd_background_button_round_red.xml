@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners android:radius="20dp"/>
+
+<!--    <solid android:color="@color/red"/>-->
+
+    <gradient
+        android:startColor="@color/background_red_button_start"
+        android:centerColor="@color/background_red_button_center"
+        android:endColor="@color/background_red_button_end"/>
+
+</shape>

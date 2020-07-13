@@ -1,0 +1,261 @@
+<resources>
+
+    <!-- Screen Titles -->
+    <string name="title_details_screen">Details</string>
+    <string name="title_pharmacies_list_screen">NearBy Pharmacies</string>
+    <string name="title_register_pharmacy_screen">Pharmacy Registration</string>
+    <string name="title_update_pharmacy_screen">Update Profile</string>
+    <string name="title_register_user_screen">User Registration</string>
+    <string name="title_update_user_screen">Update Profile</string>
+    <string name="title_sign_in_screen">Sign In</string>
+    <string name="title_search_screen">Search</string>
+    <string name="title_edit_cart_message_screen">Edit Message</string>
+    <string name="title_about_us_screen">About Us</string>
+    <string name="title_disclaimers_screen">Terms and Disclaimers</string>
+    <string name="title_cart_screen">Cart</string>
+    <string name="title_orders_list_screen">Orders</string>
+    <string name="title_order_detail_screen">Order Details</string>
+    <string name="title_forgot_password_screen">Forgot Password</string>
+    <string name="title_forgot_new_screen">Change Password</string>
+    <string name="title_settings_screen">Settings</string>
+    <string name="title_help_screen">Help</string>
+    <string name="title_place_order_screen">Place Order</string>
+    <string name="title_category_select_screen">Register As</string>
+    <string name="title_emergency_numbers_screen">Emergency Numbers</string>
+    <string name="title_dashboard_pharmacy_screen">Dashboard</string>
+    <string name="title_graphical_stats_screen">Statistics</string>
+    <string name="title_code_verification_screen">Code Verification</string>
+    <string name="title_promotions_list_screen">Promotions</string>
+    <string name="title_create_promotions_screen">Create Promotion</string>
+
+
+    <!-- Screen Messages -->
+    <string name="empty_cart">Cart is empty</string>
+
+
+    <!-- Screen Texts -->
+    <string name="category_select_text">Please select your category to register.</string>
+    <string name="search_medicine_cart"><u>Search Medicine</u></string>
+    <string name="web_search_medicine"><u>More Information</u></string>
+    <string name="select_pharmacy"><u>Select Pharmacy</u></string>
+    <string name="terms_disclaimers_title"><![CDATA[Terms & Disclaimers]]></string>
+    <string name="nearest_pharmacy_text">Please select your pharmacy from the list below or create a new pharmacy…</string>
+    <string name="not_found_pharmacy_button">Create New Pharmacy</string>
+    <string name="sign_in_code_verification_text">You are signed in on another device. Please enter the code sent to your email to authorize this device.</string>
+
+
+    <!-- Clear Cart Dialog -->
+    <string name="clear_cart_dialog_title">Order Placed</string>
+    <string name="clear_cart_dialog_message">Do you want to clear the cart ?</string>
+    <string name="clear_cart_dialog_button1">No</string>
+    <string name="clear_cart_dialog_button2">Yes</string>
+
+
+    <!-- Confirm Order Dialog -->
+    <string name="confirm_order_dialog_title">Please Confirm Order</string>
+    <string name="confirm_order_dialog_message">Please select the type of order you want to place ?</string>
+    <string name="confirm_order_dialog_type_1">Pick Up</string>
+    <string name="confirm_order_dialog_type_2">Delivery</string>
+    <string name="confirm_order_dialog_button_1">Cancel</string>
+    <string name="confirm_order_dialog_button_2">Confirm</string>
+
+
+    <!-- Delete Items Dialog -->
+    <string name="delete_items_dialog_title">Delete Item(s)</string>
+    <string name="delete_items_dialog_message">Delete the selected cart item(s) ?</string>
+    <string name="delete_items_dialog_button_1">No</string>
+    <string name="delete_items_dialog_button_2">Yes</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tray_notification_color">#ffffff</string>
+
+    <string name="aboutUs">
+    <![CDATA[
+        <html>
+            <head></head>
+            <body style="text-align:justify;color:black;font-size:16px">
+
+                <p>In this age of Information Technology every consumer and business corporation are dependent on the way how information flows rapidly, securely and surely.</p>
+                <p>PHARMED is developed with the commitment to provide better service towards consumer and retail pharmacy community with seamless flow of information.</p>
+                <p>The PHARMED is developed to facilitate users on following location-based services:</p>
+                    <ul>
+                        <li>Find licensed and approved nearby and distant pharmacies</li>
+                        <li>Locate, Select and Connect a Pharmacy via Phone / SMS and/or using Google map</li>
+                        <li>Search and place order for selected medicines</li>
+                        <li>Repeat medicine for processed orders</li>
+                        <li>Order tracking and management both at consumer and retailer level</li>
+                    </ul>
+                <p>PHARMED also provide users a facility to find the Pharmacies anywhere around the world by moving their Pin on the map and dropping the pin at the location of their choice.</p>
+                <p>PHARMED provides a feature for any Pharmacy owner to create their account and add their Pharmacy(s) in PHARMED database for consumers reach.</p>
+                <p>PHARMED provides a clear design & a user friendly Interface to make the best use of it during emergencies and general situations, without incurring any extra costs to the users.</p>
+            </body>
+        </html>
+    ]]>
+    </string>
+
+    <string name="aboutUsNight">
+    <![CDATA[
+        <html>
+            <head></head>
+            <body style="text-align:justify;color:white;font-size:16px">
+
+                <p>In this age of Information Technology every consumer and business corporation are dependent on the way how information flows rapidly, securely and surely.</p>
+                <p>PHARMED is developed with the commitment to provide better service towards consumer and retail pharmacy community with seamless flow of information.</p>
+                <p>The PHARMED is developed to facilitate users on following location-based services:</p>
+                    <ul>
+                        <li>Find licensed and approved nearby and distant pharmacies</li>
+                        <li>Locate, Select and Connect a Pharmacy via Phone / SMS and/or using Google map</li>
+                        <li>Search and place order for selected medicines</li>
+                        <li>Repeat medicine for processed orders</li>
+                        <li>Order tracking and management both at consumer and retailer level</li>
+                    </ul>
+                <p>PHARMED also provide users a facility to find the Pharmacies anywhere around the world by moving their Pin on the map and dropping the pin at the location of their choice.</p>
+                <p>PHARMED provides a feature for any Pharmacy owner to create their account and add their Pharmacy(s) in PHARMED database for consumers reach.</p>
+                <p>PHARMED provides a clear design & a user friendly Interface to make the best use of it during emergencies and general situations, without incurring any extra costs to the users.</p>
+            </body>
+        </html>
+    ]]>
+    </string>
+
+    <string name="disclaimers">
+    <![CDATA[
+        <html>
+            <head></head>
+            <body style="text-align:justify;color:black;font-size:16px">
+
+               <p><h4>1. The Registration Process</h4></p>
+
+                    <p><u>Pharmacy Registration:</u></p>
+
+                        <p>To register with PHARMED, you must provide the compulsory information required as marked with * on data fields.</p>
+                        <p>To register your pharmacy with us, you must share your pharmacy location and name along with other required information.</p>
+                        <p>You can upload the picture of your business to personalize the App and must provide your Mobile Phone Number for us to contact you for any special offers in the future.</p>
+
+                    <p><u>Acknowledgement:</u></p>
+
+                        <p>By registering your business with Pharmed App, you guarantee to provide accurate, true, current and complete information and that you will maintain the security of your account by not sharing your password with others and restricting access to your account and Your computer and also that you take responsibility for all activities that occur under your account and accept all risks of unauthorized access.</p>
+
+               <p><h4>2. Prescription Drugs</h4></p>
+
+                    <p>It is mandatory to provide prescription issued by a registered medical practitioner for buying a prescription drug, along with your personal information.</p>
+
+
+               <p><h4>3. Representation</h4></p>
+
+                    <p>Company does not make any representation or Warranty as to specifics (such as quality, value, scalability, etc.) of the products or services proposed to be sold or offered to be sold or purchased through Pharmed App.</p>
+
+                    <p>At no time shall Company hold any right, title or interest over the products nor shall Company have any obligations or liabilities in respect of such contract entered into between Buyers and Sellers.</p>
+
+                <p><h4>4. Disclaimers, Warranties and Liabilities</h4></p>
+
+                    <p>The Pharmed App is intended for information, communication and networking purposes only and is an aggregator of registered pharmacies, medical stores in the vicinity/locality of the searched area.</p>
+
+                    <p>It is not intended, for use in the actual sale of medicine, diagnosis of disease or other conditions, or in the cure, mitigation, treatment, or prevention of disease, in humans or animals. Users should consult their physicians and medical specialists before using any medication searched using the PHARMED App.</p>
+
+                    <p>PHARMED and its partners has no liability, either as a manufacturer, retailer, reseller, wholesaler or in any other commercial or private capacity for the medication purchased by customers using this PHARMED App.</p>
+
+                    <p>You acknowledge and undertake that you are accessing the services on the PHARMED App and transacting at the pharmacies and medical stores at your own risk and are using your best and prudent judgment before entering into any transactions facilitated by this App. We shall neither be liable nor responsible for any actions or inactions of sellers, nor any breach of conditions, representations or warranties by the sellers or manufacturers of the products and hereby expressly disclaim any and all responsibility and liability in that regard. We shall not mediate or resolve any dispute or disagreement between you and the sellers or manufacturers of the products.</p>
+
+                    <p>In no event shall <b>ZS Business Solutions (Pvt.) Ltd., a company who owns the PHARMED App</b> be liable for any special, incidental, indirect or consequential damages of any kind in connection with these terms of use, even if user has been informed of the possibility of such damages.</p>
+
+
+                <p><h4>5. Events beyond our reasonable control</h4></p>
+
+                    <p>We will not be held responsible for any delay or failure to comply with our obligations under these conditions if the delay or failure arises from any cause which is beyond our reasonable control. This condition does not affect your statutory rights.</p>
+
+                <p><h4>6. Governing law and Jurisdiction</h4></p>
+
+                    <p>These conditions are governed by and construed in accordance with the prevailing laws of Pakistan. You agree, as we do, to submit to the exclusive jurisdiction of the courts at Lahore.</p>
+
+                <p><h4>7. Severability & Waiver Contact Information</h4></p>
+
+                    <p>If any provision of this Terms of Use is held to be invalid or unenforceable, such provision shall be struck and the remaining provisions shall be enforced.</p>
+
+            </body>
+        </html>
+    ]]>
+    </string>
+
+    <string name="disclaimersNight">
+    <![CDATA[
+        <html>
+            <head></head>
+            <body style="text-align:justify;color:white;font-size:16px">
+
+               <p><h4>1. The Registration Process</h4></p>
+
+                    <p><u>Pharmacy Registration:</u></p>
+
+                        <p>To register with PHARMED, you must provide the compulsory information required as marked with * on data fields.</p>
+                        <p>To register your pharmacy with us, you must share your pharmacy location and name along with other required information.</p>
+                        <p>You can upload the picture of your business to personalize the App and must provide your Mobile Phone Number for us to contact you for any special offers in the future.</p>
+
+                    <p><u>Acknowledgement:</u></p>
+
+                        <p>By registering your business with Pharmed App, you guarantee to provide accurate, true, current and complete information and that you will maintain the security of your account by not sharing your password with others and restricting access to your account and Your computer and also that you take responsibility for all activities that occur under your account and accept all risks of unauthorized access.</p>
+
+               <p><h4>2. Prescription Drugs</h4></p>
+
+                    <p>It is mandatory to provide prescription issued by a registered medical practitioner for buying a prescription drug, along with your personal information.</p>
+
+
+               <p><h4>3. Representation</h4></p>
+
+                    <p>Company does not make any representation or Warranty as to specifics (such as quality, value, scalability, etc.) of the products or services proposed to be sold or offered to be sold or purchased through Pharmed App.</p>
+
+                    <p>At no time shall Company hold any right, title or interest over the products nor shall Company have any obligations or liabilities in respect of such contract entered into between Buyers and Sellers.</p>
+
+                <p><h4>4. Disclaimers, Warranties and Liabilities</h4></p>
+
+                    <p>The Pharmed App is intended for information, communication and networking purposes only and is an aggregator of registered pharmacies, medical stores in the vicinity/locality of the searched area.</p>
+
+                    <p>It is not intended, for use in the actual sale of medicine, diagnosis of disease or other conditions, or in the cure, mitigation, treatment, or prevention of disease, in humans or animals. Users should consult their physicians and medical specialists before using any medication searched using the PHARMED App.</p>
+
+                    <p>PHARMED and its partners has no liability, either as a manufacturer, retailer, reseller, wholesaler or in any other commercial or private capacity for the medication purchased by customers using this PHARMED App.</p>
+
+                    <p>You acknowledge and undertake that you are accessing the services on the PHARMED App and transacting at the pharmacies and medical stores at your own risk and are using your best and prudent judgment before entering into any transactions facilitated by this App. We shall neither be liable nor responsible for any actions or inactions of sellers, nor any breach of conditions, representations or warranties by the sellers or manufacturers of the products and hereby expressly disclaim any and all responsibility and liability in that regard. We shall not mediate or resolve any dispute or disagreement between you and the sellers or manufacturers of the products.</p>
+
+                    <p>In no event shall <b>ZS Business Solutions (Pvt.) Ltd., a company who owns the PHARMED App</b> be liable for any special, incidental, indirect or consequential damages of any kind in connection with these terms of use, even if user has been informed of the possibility of such damages.</p>
+
+
+                <p><h4>5. Events beyond our reasonable control</h4></p>
+
+                    <p>We will not be held responsible for any delay or failure to comply with our obligations under these conditions if the delay or failure arises from any cause which is beyond our reasonable control. This condition does not affect your statutory rights.</p>
+
+                <p><h4>6. Governing law and Jurisdiction</h4></p>
+
+                    <p>These conditions are governed by and construed in accordance with the prevailing laws of Pakistan. You agree, as we do, to submit to the exclusive jurisdiction of the courts at Lahore.</p>
+
+                <p><h4>7. Severability & Waiver Contact Information</h4></p>
+
+                    <p>If any provision of this Terms of Use is held to be invalid or unenforceable, such provision shall be struck and the remaining provisions shall be enforced.</p>
+
+            </body>
+        </html>
+    ]]>
+    </string>
+    <string name="title_activity_map">Map Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string-array name="units_array">
+        <item></item>
+        <item>g</item>
+        <item>l</item>
+        <item>mg</item>
+        <item>ml</item>
+    </string-array>
+</resources>

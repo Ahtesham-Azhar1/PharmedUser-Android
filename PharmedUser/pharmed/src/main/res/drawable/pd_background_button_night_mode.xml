@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/pd_background_button_gradient_night"/>
+
+    <item
+        android:drawable="@drawable/pd_background_button_dark"
+        android:top="1dp"
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp" />
+
+    <!--<item-->
+        <!--android:top="1dp"-->
+        <!--android:bottom="1dp"-->
+        <!--android:left="1dp"-->
+        <!--android:right="1dp">-->
+        <!--<shape-->
+            <!--android:shape="oval">-->
+
+            <!--<solid android:color="@color/colorPrimary"/>-->
+
+        <!--</shape>-->
+    <!--</item>-->
+
+
+</layer-list>

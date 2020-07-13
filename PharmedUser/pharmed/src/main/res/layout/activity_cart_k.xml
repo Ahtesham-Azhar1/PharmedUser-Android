@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cart_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/formBackground"
+    tools:context=".activities.CartKActivity">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/custom_toolbar_themed" />
+
+    <View
+        android:id="@+id/functions_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/grey"
+        app:layout_constraintTop_toBottomOf="@id/top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="50dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middle_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="50dp"/>
+
+    <CheckBox
+        android:id="@+id/select_all"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/functions_bar"
+        app:layout_constraintBottom_toBottomOf="@id/functions_bar"
+        app:layout_constraintStart_toStartOf="@id/functions_bar"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/total_items"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="Total Items: "
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/functions_bar"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="@id/functions_bar" />
+
+    <ImageView
+        android:id="@+id/remove_icon"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/functions_bar"
+        app:layout_constraintBottom_toBottomOf="@id/functions_bar"
+        app:layout_constraintEnd_toEndOf="@id/functions_bar"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_delete_grey"
+        android:tint="@color/white"
+        android:padding="3dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/selection_label"
+        app:layout_constraintTop_toBottomOf="@id/functions_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/no_cart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/no_cart_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_cart"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/search_medicine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/search_medicine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_medicine_cart"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="@color/hyperlink_color"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@id/no_cart_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selection_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/bottom"
+        android:background="@color/selectedPharmacyLabelBackgroundColor"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/selected_pharmacy_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cancel_selection"
+            android:text="Selected Pharmacy: "
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"/>
+
+        <ImageView
+            android:id="@+id/cancel_selection"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/icon_cross"
+            android:padding="4dp"
+            android:layout_marginEnd="6dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/total_items"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:gravity="start|center_vertical"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingEnd="20dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:text="Total Items: "-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/bottom"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/done"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/bottom" />-->
+
+    <Button
+        android:id="@+id/prescription"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/buttons_height"
+        android:layout_margin="5dp"
+        android:background="@drawable/pd_background_button_dark"
+        android:text="Prescription"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:fadingEdge="horizontal"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:drawableStart="@drawable/icon_attachment"
+        app:layout_constraintBottom_toBottomOf="@id/bottom"
+        app:layout_constraintEnd_toStartOf="@id/middle_guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom"
+        android:visibility="gone"/>
+
+    <ImageButton
+        android:id="@+id/attach_prescription"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@id/bottom"
+        app:layout_constraintBottom_toBottomOf="@id/bottom"
+        app:layout_constraintStart_toStartOf="@id/bottom"
+        app:layout_constraintEnd_toStartOf="@id/search_meds"
+        android:src="@drawable/icon_attach_prescription"
+        android:scaleType="centerInside"
+        android:background="@drawable/pd_background_button_dark"
+        android:paddingTop="2dp"
+        android:paddingBottom="5dp"
+        android:layout_margin="5dp"/>
+
+    <ImageButton
+        android:id="@+id/search_meds"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@id/bottom"
+        app:layout_constraintBottom_toBottomOf="@id/bottom"
+        app:layout_constraintStart_toEndOf="@id/attach_prescription"
+        app:layout_constraintEnd_toStartOf="@id/create_meds"
+        android:src="@drawable/icon_medicine_search_white"
+        android:scaleType="centerInside"
+        android:background="@drawable/pd_background_button_dark"
+        android:padding="5dp"
+        android:layout_margin="5dp"/>
+
+    <ImageButton
+        android:id="@+id/create_meds"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@id/bottom"
+        app:layout_constraintBottom_toBottomOf="@id/bottom"
+        app:layout_constraintStart_toEndOf="@id/search_meds"
+        app:layout_constraintEnd_toStartOf="@id/middle_guideline"
+        android:src="@drawable/icon_create_medicine"
+        android:scaleType="centerInside"
+        android:background="@drawable/pd_background_button_dark"
+        android:padding="5dp"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/buttons_height"
+        android:layout_margin="5dp"
+        android:background="@drawable/pd_background_button_dark"
+        android:text="Select Pharmacy"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:fadingEdge="horizontal"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/middle_guideline"
+        app:layout_constraintTop_toTopOf="@id/bottom" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

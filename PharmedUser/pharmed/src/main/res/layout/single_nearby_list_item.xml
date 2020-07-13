@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="@dimen/corner_radius_list_tile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pharmacy_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:paddingTop="5dp"
+            android:paddingStart="5dp"
+            android:paddingBottom="8dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/image_margin_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end_margin_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="5dp" />
+
+            <!--<ImageView-->
+                <!--android:id="@+id/icon"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:padding="10dp"-->
+                <!--android:src="@drawable/general_pharmacy_icon_map_12"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintDimensionRatio="1:1"-->
+                <!--app:layout_constraintEnd_toStartOf="@id/image_margin_guideline"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--android:visibility="gone"/>-->
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/icon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/icon_pharmacy_general"
+                android:layout_marginStart="5dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/image_margin_guideline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="@id/address_title" />
+
+            <TextView
+                android:id="@+id/initials"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="@id/icon"
+                app:layout_constraintBottom_toBottomOf="@id/icon"
+                app:layout_constraintStart_toStartOf="@id/icon"
+                app:layout_constraintEnd_toEndOf="@id/icon"
+                android:gravity="center"
+                android:text="AA"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/action_bar"
+                app:layout_constraintStart_toEndOf="@id/image_margin_guideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/address_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_marginStart="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:layout_marginEnd="5dp"
+                android:text="Address Title  Title  Title "
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@id/delivery_limit"
+                app:layout_constraintStart_toEndOf="@id/image_margin_guideline"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/address_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:ellipsize="end"
+                android:layout_marginStart="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:maxLines="1"
+                android:text="Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address Address "
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/end_margin_guideline"
+                app:layout_constraintStart_toEndOf="@id/image_margin_guideline"
+                app:layout_constraintTop_toBottomOf="@id/address_title"
+                app:layout_constraintBottom_toTopOf="@id/action_bar"/>
+
+            <include
+                android:id="@+id/action_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/send_cart"
+                app:layout_constraintStart_toEndOf="@id/image_margin_guideline"
+                app:layout_constraintEnd_toStartOf="@id/end_margin_guideline"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                layout="@layout/pharmacy_actions_bar"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/send_cart"
+                app:layout_constraintBottom_toBottomOf="@id/send_cart"
+                app:layout_constraintStart_toEndOf="@id/image_margin_guideline"
+                android:layout_marginStart="10dp"
+                android:text="+92"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/send_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height_send_cart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/end_margin_guideline"
+                android:layout_marginTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:gravity="center"
+                android:text="Select"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:background="@drawable/pd_background_button_dark"
+                android:visibility="gone"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="@drawable/pd_background_cart_count"
+                app:layout_constraintTop_toTopOf="@id/delivery_limit"
+                app:layout_constraintBottom_toBottomOf="@id/delivery_limit"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="@id/delivery_limit"
+                app:layout_constraintEnd_toStartOf="@id/delivery_limit"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/delivery_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min. Order:\nPKR 500"
+                android:textColor="@color/white"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="5dp"
+                android:textSize="@dimen/min_order_text_size_list"
+                android:gravity="center"
+                android:background="@drawable/pd_background_delivery_limit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

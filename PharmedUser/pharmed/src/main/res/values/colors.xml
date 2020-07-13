@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/pdThemeBlueColorL</color>
+    <color name="colorPrimaryDark">@color/pdThemeBlueColorL</color>
+    <color name="colorAccent">@color/pdThemeBlueColorL</color>
+
+
+    <color name="themeGreenColor">#87c253</color>
+    <color name="themeCenterColor">#6cb792</color>
+    <color name="themeBlueColor">#44a6f1</color>
+    <color name="colorPrimaryO">#FF1D2C6F</color>
+    <color name="colorPrimaryLight">#273572</color>
+
+    <color name="pdThemeGreenColorL">#40BD84</color>
+    <color name="pdThemeCenterColorL">#56c9bc</color>
+    <color name="pdThemeBlueColorL">#56b0d3</color>
+
+    <!--<color name="themeGreenColorL">#40BD84</color>-->
+    <!--<color name="themeCenterColorL">#56c9bc</color>-->
+    <!--<color name="themeBlueColorL">#56b0d3</color>-->
+
+    <color name="themeGreenColorLL">#28C485</color>
+    <color name="themeCenterColorLL">#2B9BAF</color>
+    <color name="themeBlueColorLL">#2568D9</color>
+
+    <color name="splashBackground">#1d2c6f</color>
+    <color name="mapsTitleColor">@color/white</color>
+    <color name="blackLight">#33000000</color>
+    <color name="whiteLight">#33FFFFFF</color>
+    <color name="mapSimilarColor">#ededed</color>
+    <color name="formBackground">#eeeeee</color>
+    <color name="closedLabelTextColor">@color/red</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#808080</color>
+    <color name="green">#3b8509</color>
+    <color name="dark_grey">#818181</color>
+    <color name="yellow">#f28d33</color>
+    <color name="phone_green">#4CAF50</color>
+    <color name="blue">#2196F3</color>
+    <color name="red">#FF0000</color>
+    <color name="pharmed_shadow_color">#808080</color>
+
+    <color name="brown">#B7742A</color>
+
+    <color name="white_light">#00FFFFFF</color>
+
+    <color name="editTextDarkBackgroundNightMode">#1b2026</color>
+
+    <color name="formBackgroundNightMode">#21262c</color>
+    <color name="editTextBackgroundNightMode">#38404d</color>
+    <color name="editTextBackgroundNightModeLight">#858585</color>
+    <color name="textColorNightMode">#E5E6EB</color>
+    <color name="iconsColorNightMode">#A0A5B1</color>
+    <color name="buttonDisabledColor">#808080</color>
+    <color name="detailsIconsColorNightMode">#4169E1</color>
+
+    <color name="initials_color">@color/white</color>
+    <color name="initials_background_color">#808080</color>
+
+    <color name="status_pending_color">#000000</color>
+    <color name="status_pending_night_mode_color">#FFFFFF</color>
+    <color name="status_confirmation_color">#00BCD4</color>
+    <color name="status_in_progress_color">#FF9800</color>
+    <color name="status_ready_color">#CDDC39</color>
+    <color name="status_enroute_color">@color/status_ready_color</color>
+    <color name="status_complete_color">#009600</color>
+    <color name="status_canceled_color">#FF0000</color>
+    <color name="status_rejected_color">#FF0000</color>
+    <color name="status_offline_color">#808080</color>
+
+    <color name="state_pending_color">@color/pdThemeBlueColorL</color>
+    <color name="state_confirmation_color">#51b3c0</color>
+    <color name="state_in_progress_color">#51b3c0</color>
+    <color name="state_enroute_color">#44ba98</color>
+    <color name="state_complete_color">@color/pdThemeGreenColorL</color>
+    <color name="state_canceled_color">#FF0000</color>
+    <color name="state_rejected_color">#FF0000</color>
+    <color name="state_waiting_color">#FFBF00</color>
+
+    <color name="pie_pending_color">#CC000000</color>
+    <color name="pie_pending_night_mode_color">#CCFFFFFF</color>
+    <color name="pie_confirmation_color">#CC00BCD4</color>
+    <color name="pie_in_progress_color">#CCFF9800</color>
+    <color name="pie_ready_color">#CCCDDC39</color>
+    <color name="pie_enroute_color">#CCA1AC38</color>
+    <color name="pie_complete_color">#CC009600</color>
+    <color name="pie_canceled_color">#B3FF0000</color>
+    <color name="pie_rejected_color">#CCF15353</color>
+    <color name="pie_offline_color">#CC808080</color>
+
+    <color name="not_available_color">#FF0000</color>
+
+    <color name="hyperlink_color">#0000EE</color>
+
+    <color name="noteColor">#33FF0000</color>
+    <color name="functionBarBgColor">#808080</color>
+    <color name="orderNoteColor">#2196F3</color>
+    <color name="cancellationNoteColor">#FF0000</color>
+
+    <color name="toastBackgroundColor">#1d2c6f</color>
+
+    <color name="featureIconColor">#1d2c6f</color>
+
+    <color name="minimum_order">#FC5757</color>
+    <color name="lightRed">#FC5757</color>
+    <color name="cancel_button">#FF5252</color>
+
+    <color name="gender_male_color">#007fff</color>
+    <color name="gender_female_color">#ff007f</color>
+
+    <color name="selectedPharmacyLabelBackgroundColor">#6D6D6D</color>
+
+    <color name="view_order_color">#7d6aac</color>
+    <color name="view_views_color">#b88165</color>
+    <color name="view_call_color">#3b8509</color>
+    <color name="view_msg_color">#f28d33</color>
+    <color name="view_direction_color">#2e75b6</color>
+    <color name="view_share_color">#bf9000</color>
+
+
+    <color name="background_red_button_start">#BD4040</color>
+    <color name="background_red_button_center">#C95656</color>
+    <color name="background_red_button_end">#D35656</color>
+</resources>

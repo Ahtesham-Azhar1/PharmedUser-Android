@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:gravity="right"
+        android:top="-30dp"
+        android:bottom="-30dp">
+        <shape android:shape="oval">
+
+            <!--<solid android:color="@color/colorPrimary"/>-->
+
+            <gradient
+                android:startColor="@color/pdThemeBlueColorL"
+                android:centerColor="@color/pdThemeBlueColorL"
+                android:endColor="@color/pdThemeGreenColorL"
+                android:angle="-90"/>
+
+            <size
+                android:width="300dp" />
+
+        </shape>
+    </item>
+
+    <item android:right="150dp">
+        <shape android:shape="rectangle">
+
+            <!--<solid android:color="@color/themeBlueColorL"/>-->
+
+            <gradient
+                android:startColor="@color/pdThemeBlueColorL"
+                android:centerColor="@color/pdThemeBlueColorL"
+                android:endColor="@color/pdThemeGreenColorL"
+                android:angle="-90"/>
+        </shape>
+    </item>
+
+    <!--<item>-->
+        <!--<shape android:shape="rectangle"/>-->
+    <!--</item>-->
+    <!--<item-->
+        <!--android:bottom="-100dp"-->
+        <!--android:left="-100dp"-->
+        <!--android:right="0dp"-->
+        <!--android:top="-100dp">-->
+        <!--<shape android:shape="oval">-->
+            <!--&lt;!&ndash;<solid android:color="@color/colorPrimary" />&ndash;&gt;-->
+
+            <!--<gradient-->
+                <!--android:startColor="@color/themeGreenColorL"-->
+                <!--android:centerColor="@color/themeBlueColorL"-->
+                <!--android:endColor="@color/themeBlueColorL"-->
+                <!--android:angle="90"/>-->
+
+        <!--</shape>-->
+    <!--</item>-->
+
+</layer-list>

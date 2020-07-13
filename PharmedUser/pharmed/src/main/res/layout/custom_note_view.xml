@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="@dimen/corner_radius_list_tile"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="8dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.45"/>
+
+            <TextView
+                android:id="@+id/note_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="5dp"
+                android:text="Note:"
+                android:textSize="16sp"
+                android:textColor="@color/red"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/note_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="3dp"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/audio_note_section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/note_label"
+            app:layout_constraintBottom_toBottomOf="@id/note_label"
+            app:layout_constraintStart_toEndOf="@id/middle_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/pd_background_button_dark"
+            android:visibility="gone">
+
+        <TextView
+            android:id="@+id/play_audio_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="Play Audio Note"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/audio_note"
+            app:layout_constraintEnd_toStartOf="@id/duration"/>
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="00:00"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="5dp"/>
+
+        <ImageButton
+            android:id="@+id/audio_note"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_play"
+            android:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"
+            android:visibility="visible"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/place_order_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/formBackground"
+    tools:context=".activities.PlaceOrderActivity">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/custom_toolbar_themed" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom"
+        app:layout_constraintTop_toBottomOf="@id/top">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start_margin_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="5dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="5dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pharmacy_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="@dimen/place_order_screen_card_margins"
+                app:cardCornerRadius="@dimen/corner_radius_list_tile"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@id/type_card"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pharmacy_item_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/selected_pharmacy_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pdThemeBlueColorL"
+                        android:paddingStart="10dp"
+                        android:paddingTop="@dimen/place_order_title_padding"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="@dimen/place_order_title_padding"
+                        android:text="Selected Pharmacy"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/place_order_title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/edit_pharmacy"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:src="@drawable/ic_edit_white"
+                        android:tint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@id/selected_pharmacy_label"
+                        app:layout_constraintDimensionRatio="1.5:1"
+                        app:layout_constraintEnd_toEndOf="@id/selected_pharmacy_label"
+                        app:layout_constraintTop_toTopOf="@id/selected_pharmacy_label" />
+
+                    <TextView
+                        android:id="@+id/select_pharmacy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:padding="5dp"
+                        android:text="@string/select_pharmacy"
+                        android:textColor="@color/hyperlink_color"
+                        android:textSize="20sp"
+                        android:textStyle="italic"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/selected_pharmacy_label" />
+
+                    <include
+                        android:id="@+id/pharmacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        layout="@layout/single_nearby_list_item"
+                        app:layout_constraintTop_toBottomOf="@id/selected_pharmacy_label"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/type_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/place_order_screen_card_margins"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="@dimen/place_order_screen_card_margins"
+                app:cardCornerRadius="@dimen/corner_radius_list_tile"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@id/address_card"
+                app:layout_constraintTop_toBottomOf="@id/pharmacy_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/type_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/selected_type_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pdThemeBlueColorL"
+                        android:paddingStart="10dp"
+                        android:paddingTop="@dimen/place_order_title_padding"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="@dimen/place_order_title_padding"
+                        android:text="Order Type"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/place_order_title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/types_radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/selected_type_label">
+
+                        <RadioButton
+                            android:id="@+id/type_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/confirm_order_dialog_type_1" />
+
+                        <RadioButton
+                            android:id="@+id/type_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="60dp"
+                            android:text="@string/confirm_order_dialog_type_2" />
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/address_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/place_order_screen_card_margins"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="@dimen/place_order_screen_card_margins"
+                app:cardCornerRadius="@dimen/corner_radius_list_tile"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@id/order_note_card"
+                app:layout_constraintTop_toBottomOf="@id/type_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/address_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/selected_address_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pdThemeBlueColorL"
+                        android:paddingStart="10dp"
+                        android:paddingTop="@dimen/place_order_title_padding"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="@dimen/place_order_title_padding"
+                        android:text="Your Address"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/place_order_title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/edit_address"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:src="@drawable/ic_edit_white"
+                        android:tint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@id/selected_address_label"
+                        app:layout_constraintDimensionRatio="1.5:1"
+                        app:layout_constraintEnd_toEndOf="@id/selected_address_label"
+                        app:layout_constraintTop_toTopOf="@id/selected_address_label" />
+
+                    <TextView
+                        android:id="@+id/user_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="5dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="Address"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/selected_address_label" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/order_note_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/place_order_screen_card_margins"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="@dimen/place_order_screen_card_margins"
+            app:cardCornerRadius="@dimen/corner_radius_list_tile"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toTopOf="@id/promo_code_card"
+            app:layout_constraintTop_toBottomOf="@id/address_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/order_note_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/note_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pdThemeBlueColorL"
+                android:paddingStart="10dp"
+                android:paddingTop="@dimen/place_order_title_padding"
+                android:paddingEnd="10dp"
+                android:paddingBottom="@dimen/place_order_title_padding"
+                android:text="Order Note"
+                android:textColor="@color/white"
+                android:textSize="@dimen/place_order_title_size"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/order_note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                app:layout_constraintTop_toBottomOf="@id/note_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/recording_section"
+                android:hint="Note"
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recording_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/audio_note"
+                app:layout_constraintBottom_toBottomOf="@id/audio_note"
+                app:layout_constraintEnd_toStartOf="@id/play_audio_section"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/pd_background_button_dark"
+                android:alpha="0.8"
+                android:visibility="gone">
+
+            <TextView
+                android:id="@+id/recording_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Recording..."
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:paddingTop="2dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/recording_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/recording_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="00:00"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:paddingBottom="2dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:visibility="visible"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageButton
+                android:id="@+id/audio_note"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:background="@android:color/transparent"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_mic_off"
+                android:tint="@color/pdThemeBlueColorL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/note_label"
+                android:visibility="visible"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/play_audio_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/audio_note"
+                app:layout_constraintTop_toBottomOf="@id/note_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/background_promo_card"
+                android:layout_margin="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/play_duration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/play_audio_note"
+                    app:layout_constraintEnd_toEndOf="@id/play_audio_note"
+                    android:gravity="center"
+                    android:text="00:00"
+                    android:textSize="10sp"
+                    android:textColor="@color/white"/>
+
+            <ImageButton
+                android:id="@+id/play_audio_note"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="5dp"
+                android:background="@android:color/transparent"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:paddingBottom="2dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_play"
+                android:tint="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/play_duration"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="visible"/>
+
+            <ImageButton
+                android:id="@+id/reset_audio_note"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="5dp"
+                android:background="@android:color/transparent"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_reset"
+                android:tint="@color/white"
+                app:layout_constraintEnd_toStartOf="@id/play_audio_note"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="visible"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:background="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/reset_audio_note"
+                    app:layout_constraintEnd_toStartOf="@id/play_audio_note"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/promo_code_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/place_order_screen_card_margins"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="@dimen/place_order_screen_card_margins"
+                app:cardCornerRadius="@dimen/corner_radius_list_tile"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@id/medicines_card"
+                app:layout_constraintTop_toBottomOf="@id/order_note_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/promo_code_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/promo_code_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pdThemeBlueColorL"
+                        android:paddingStart="10dp"
+                        android:paddingTop="@dimen/place_order_title_padding"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="@dimen/place_order_title_padding"
+                        android:text="Promo Code"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/place_order_title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/promo_code"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_margin="5dp"
+                        app:layout_constraintTop_toBottomOf="@id/promo_code_label"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/promotions_list"
+                        android:hint="Select Promo Code"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"/>
+
+                    <ImageButton
+                        android:id="@+id/promotions_list"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitXY"
+                        android:padding="5dp"
+                        android:tint="@color/pdThemeBlueColorL"
+                        android:src="@drawable/icon_action_promotion"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/promo_code_label"
+                        android:visibility="visible"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/medicines_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/place_order_screen_card_margins"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="@dimen/place_order_screen_card_margins"
+                app:cardCornerRadius="@dimen/corner_radius_list_tile"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@id/prescriptions_card"
+                app:layout_constraintTop_toBottomOf="@id/promo_code_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/medicines_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/medicines_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pdThemeBlueColorL"
+                        android:paddingStart="10dp"
+                        android:paddingTop="@dimen/place_order_title_padding"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="@dimen/place_order_title_padding"
+                        android:text="Items"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/place_order_title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/edit_items"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:src="@drawable/ic_edit_white"
+                        android:tint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@id/medicines_label"
+                        app:layout_constraintDimensionRatio="1.5:1"
+                        app:layout_constraintEnd_toEndOf="@id/medicines_label"
+                        app:layout_constraintTop_toTopOf="@id/medicines_label" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/medicines_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_constraintTop_toBottomOf="@id/medicines_label" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/prescriptions_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="@dimen/place_order_screen_card_margins"
+                android:layout_marginBottom="@dimen/place_order_screen_card_margins"
+                app:cardCornerRadius="@dimen/corner_radius_list_tile"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/medicines_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/prescriptions_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/prescriptions_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pdThemeBlueColorL"
+                        android:paddingStart="10dp"
+                        android:paddingTop="@dimen/place_order_title_padding"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="@dimen/place_order_title_padding"
+                        android:text="Attachments"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/place_order_title_size"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/edit_prescriptions"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:src="@drawable/ic_edit_white"
+                        android:tint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@id/prescriptions_label"
+                        app:layout_constraintDimensionRatio="1.5:1"
+                        app:layout_constraintEnd_toEndOf="@id/prescriptions_label"
+                        app:layout_constraintTop_toTopOf="@id/prescriptions_label" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/prescriptions_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/prescriptions_label" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/place_order"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/buttons_height"
+        android:layout_margin="5dp"
+        android:background="@drawable/pd_background_button_dark"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="Place Order"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

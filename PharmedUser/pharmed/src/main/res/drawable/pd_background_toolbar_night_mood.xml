@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+
+            <corners android:radius="@dimen/toolbar_corner_radius" />
+
+            <gradient
+                android:startColor="@color/white"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="200%p"
+                android:type="radial" />
+
+        </shape>
+    </item>
+
+    <item
+        android:bottom="1dp"
+        android:drawable="@drawable/pd_background_toolbar"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp" />
+
+</layer-list>

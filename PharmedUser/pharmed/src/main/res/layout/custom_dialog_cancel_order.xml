@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cancel_order_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:padding="10dp"
+    android:background="@drawable/pd_background_et_round">
+
+    <TextView
+        android:id="@+id/pd_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Cancel Order"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/pd_dialog_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Please select why order is being rejected ?"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/pd_dialog_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
+
+    <RadioGroup
+        android:id="@+id/reasons_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/pd_dialog_message">
+
+        <RadioButton
+            android:id="@+id/reason_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medicine Not Available."
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/reason_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Allowed for Online Sale"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/reason_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prescription Required"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/reason_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prescription Not Clear"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/reason_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Value is less than Minimum Order Limit"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/other_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:layout_weight="1"/>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/custom_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/reasons_radio_group"
+        android:background="@drawable/pd_background_et_round"
+        android:paddingStart="15dp"
+        android:paddingEnd="15sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:hint="Reason*"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/custom_reason"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/submit"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:background="@drawable/pd_background_button_dialog_cancel"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:padding="5dp"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@id/cancel"
+        app:layout_constraintStart_toEndOf="@id/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:background="@drawable/pd_background_button_dark"
+        android:layout_marginStart="5dp"
+        android:padding="5dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
