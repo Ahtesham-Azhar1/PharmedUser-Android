@@ -121,6 +121,7 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
 
     private lateinit var bottom: View
     private lateinit var placeOrder: Button
+    private var token: String? = null
 
     private var order: Order? = null
 
@@ -261,6 +262,9 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
 
         nightMode = Preferences.getNightThemeSelectionFromSharedPreferences(this)
 
+        if(intent.hasExtra(Constants.INTENT_TOKEN))
+            token = intent.getStringExtra(Constants.INTENT_TOKEN)
+
         checkTheme()
         setFieldLimits()
 
@@ -354,9 +358,19 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
     }
 
     private fun populateDetails() {
-        if(order != null){
+        if(order != null) {
 
-            order?.user = Preferences.getUserDataFromSharedPreferences(this)
+            if(order?.user == null) {
+                var user = User()
+
+                if (intent.hasExtra(Constants.INTENT_DEVICE_ID))
+                    user.deviceId = intent.getStringExtra(Constants.INTENT_DEVICE_ID)
+
+                if (intent.hasExtra(Constants.INTENT_USER_ID))
+                    user.id = intent.getStringExtra(Constants.INTENT_USER_ID)
+
+                order?.user = user
+            }
 
             userLoggedIn = order?.user != null
 
@@ -662,9 +676,9 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
 
                 var checkoutParams = CheckoutParams()
 
-                if (user != null) {
-                    userId = user.id!!
-                    checkoutParams.message = "Order Placed by " + user.firstName + " " + user.lastName
+                if (order?.user != null && order?.user?.id != null && order?.user?.id!!.isNotEmpty()) {
+                    userId = order?.user?.id!!
+//                    checkoutParams.message = "Order Placed by " + user.firstName + " " + user.lastName
                 } else {
                     userId = "-1"
                     checkoutParams.message = "New Order Placed"

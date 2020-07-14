@@ -84,6 +84,9 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
     private var smsOrderSent = false
     private var reOrder = false
     private var forEdit = false
+    private var deviceId: String? = null
+    private var userId: String? = null
+    private var token: String? = null
 
     private var files: MutableList<File>? = null
     private var prescriptionList: ArrayList<Prescription>? = null
@@ -153,7 +156,21 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
         medicinesList = Preferences.getCartItemsFromSharedPreferences(this)
 
+        if(intent.hasExtra(Constants.INTENT_DEVICE_ID))
+            deviceId = intent.getStringExtra(Constants.INTENT_DEVICE_ID)
+
+        if(intent.hasExtra(Constants.INTENT_USER_ID))
+            userId = intent.getStringExtra(Constants.INTENT_USER_ID)
+
+        if(intent.hasExtra(Constants.INTENT_TOKEN))
+            token = intent.getStringExtra(Constants.INTENT_TOKEN)
+
+        if(intent.hasExtra(Constants.INTENT_MEDICINES))
+            medicinesList = intent.getSerializableExtra(Constants.INTENT_MEDICINES) as ArrayList<MedicineDetails>
+
         selectedPharmacy = Preferences.getSelectedPharmacyFromSharedPreferences(this)
+
+        Preferences.addAuthCodeToSharedPreferences(this, token)
 
         if(intent.hasExtra(Constants.INTENT_RE_ORDER))
             reOrder = intent.getBooleanExtra(Constants.INTENT_RE_ORDER, false)
@@ -570,6 +587,9 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
             placeOrder.putExtra(Constants.INTENT_RE_ORDER, true)
 
         placeOrder.putExtra(Constants.INTENT_ORDER, order)
+        placeOrder.putExtra(Constants.INTENT_TOKEN, token)
+        placeOrder.putExtra(Constants.INTENT_USER_ID, userId)
+        placeOrder.putExtra(Constants.INTENT_DEVICE_ID, deviceId)
         startActivity(placeOrder)
     }
 
@@ -585,20 +605,20 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
             cartParams.placeLng = Constants.CURRENT_LNG
             cartParams.cartList = medicinesList
 
-            var userId = ""
-
-            userId = if(Preferences.getUserDataFromSharedPreferences(this) != null){
-                Preferences.getUserDataFromSharedPreferences(this).id.toString()
-            } else {
-                Constants.DEFAULT_USER_ID
-            }
+//            var userId = ""
+//
+//            userId = if(Preferences.getUserDataFromSharedPreferences(this) != null){
+//                Preferences.getUserDataFromSharedPreferences(this).id.toString()
+//            } else {
+//                Constants.DEFAULT_USER_ID
+//            }
 
             cartParams.userId = userId
-            cartParams.deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
+//            cartParams.deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
 
             val restApis = RetroClient.getClient().create(RestApis::class.java)
 
-            val sendCartCall = restApis.sendCart(Preferences.getAuthCodeFromSharedPreferences(this),
+            val sendCartCall = restApis.sendCart(token,
                     Constants.HEADER_CONTENT_TYPE_VALUE, cartParams)
             sendCartCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -640,8 +660,8 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
                 }
             })
 
-            if(Preferences.getUserDataFromSharedPreferences(this) != null)
-                sendAttachmentsCall(userId)
+//            if(Preferences.getUserDataFromSharedPreferences(this) != null)
+                sendAttachmentsCall(userId!!)
 
         } else {
             showToast(Constants.NO_INTERNET_CONNECTION)
@@ -651,7 +671,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
     private fun sendAttachmentsCall(userId: String){
 
         val restApis = RetroClient.getClient().create(RestApis::class.java)
-        val deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
+//        val deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
 
         if(files != null && files!!.size > 0) {
 
@@ -690,7 +710,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 //            cartParams.userId = userId
 //            cartParams.deviceId = deviceId
 
-            val sendAttachmentsCall = restApis.sendPrescriptions(Preferences.getAuthCodeFromSharedPreferences(this),
+            val sendAttachmentsCall = restApis.sendPrescriptions(token,
                     userIdRB, deviceIdRB, attachmentBody1, attachmentBody2, attachmentBody3)
             sendAttachmentsCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -748,7 +768,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
             cartParams.userId = userId
             cartParams.deviceId = deviceId
 
-            val removeAttachmentsCall = restApis.removePrescriptions(Preferences.getAuthCodeFromSharedPreferences(this),
+            val removeAttachmentsCall = restApis.removePrescriptions(token,
                     Constants.HEADER_CONTENT_TYPE_VALUE, cartParams)
             removeAttachmentsCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -1184,7 +1204,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.prescription ->
 
-                if(Preferences.getUserDataFromSharedPreferences(this) != null) {
+                if(userId != null && userId != "") {
                     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         askCallPermission()
                     } else {
@@ -1200,7 +1220,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.attach_prescription ->
 
-                if(Preferences.getUserDataFromSharedPreferences(this) != null) {
+                if(userId != null && userId != "") {
                     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         askCallPermission()
                     } else {
@@ -1264,7 +1284,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onBackPressed() {
 
-        if(forEdit){
+        if(forEdit) {
             forEdit = false
             openPlaceOrder()
         } else {

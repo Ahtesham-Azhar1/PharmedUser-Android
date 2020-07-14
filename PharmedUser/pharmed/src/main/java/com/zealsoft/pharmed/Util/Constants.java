@@ -289,6 +289,10 @@ public class Constants {
     public static final String INTENT_PROMOTION_EDIT = "promotion_edit";
     public static final String INTENT_PROMOTION_DELETE = "promotion_delete";
     public static final String INTENT_PROMOTION_CODE = "promotion_code";
+    public static final String INTENT_MEDICINES = "medicines";
+    public static final String INTENT_TOKEN = "token";
+    public static final String INTENT_USER_ID = "userId";
+    public static final String INTENT_DEVICE_ID = "deviceId";
 
     public static final String INTENT_SUB_PRICE = "sub_price";
     public static final String INTENT_PRICE = "price";

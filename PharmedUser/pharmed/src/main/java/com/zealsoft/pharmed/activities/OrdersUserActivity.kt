@@ -73,6 +73,9 @@ class OrdersUserActivity : AppCompatActivity(), View.OnClickListener, SwipeRefre
     private lateinit var restApis: RestApis
     private var statuses: List<String>? = null
     private var selectedStatus: String? = null
+    private var deviceId: String? = null
+    private var userId: String? = null
+    private var token: String? = null
 
     private lateinit var manager: FragmentManager
     private var fragment: Fragment? = null
@@ -116,6 +119,17 @@ class OrdersUserActivity : AppCompatActivity(), View.OnClickListener, SwipeRefre
         restApis = RetroClient.getClient().create(RestApis::class.java)
 
         nightMode = Preferences.getNightThemeSelectionFromSharedPreferences(this)
+
+        if(intent.hasExtra(Constants.INTENT_DEVICE_ID))
+            deviceId = intent.getStringExtra(Constants.INTENT_DEVICE_ID)
+
+        if(intent.hasExtra(Constants.INTENT_USER_ID))
+            userId = intent.getStringExtra(Constants.INTENT_USER_ID)
+
+        if(intent.hasExtra(Constants.INTENT_TOKEN))
+            token = intent.getStringExtra(Constants.INTENT_TOKEN)
+
+        Preferences.addAuthCodeToSharedPreferences(this, token)
 
         if (showDetails) {
             showOrdersDetails(null)
@@ -245,16 +259,16 @@ class OrdersUserActivity : AppCompatActivity(), View.OnClickListener, SwipeRefre
                     customDialog?.showLoadingDialogue()
             }
 
-            val user = Preferences.getUserDataFromSharedPreferences(this)
-            val deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
+//            val user = Preferences.getUserDataFromSharedPreferences(this)
+//            val deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
 
-            var userId = ""
+//            var userId = ""
 
-            userId = if(user != null){
-                user.id.toString()
-            } else {
-                Constants.DEFAULT_USER_ID
-            }
+//            userId = if(user != null){
+//                user.id.toString()
+//            } else {
+//                Constants.DEFAULT_USER_ID
+//            }
 
             val restApis = RetroClient.getClient().create(RestApis::class.java)
 
@@ -266,7 +280,7 @@ class OrdersUserActivity : AppCompatActivity(), View.OnClickListener, SwipeRefre
             params.orderPageNumber = 1
             params.orderPageSize = 100
 
-            val getOrdersCall = restApis.getUserOrders(Preferences.getAuthCodeFromSharedPreferences(this),
+            val getOrdersCall = restApis.getUserOrders(token,
                     Constants.HEADER_CONTENT_TYPE_VALUE, params)
             getOrdersCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
