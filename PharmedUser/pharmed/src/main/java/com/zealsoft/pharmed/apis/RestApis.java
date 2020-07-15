@@ -7,6 +7,7 @@ import com.zealsoft.pharmed.models.CheckoutParams;
 import com.zealsoft.pharmed.models.GeneralResponse;
 import com.zealsoft.pharmed.models.MapParams;
 import com.zealsoft.pharmed.models.Params;
+import com.zealsoft.pharmed.models.SignInUserParams;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -23,6 +24,23 @@ import retrofit2.http.Path;
 
 
 public interface RestApis {
+
+    //----------------------------------------------------------------------------------------------
+    // Login as User Call
+
+    @Multipart
+    @POST("users/signin")
+    Call<com.zealsoft.pharmed.models.GeneralResponse> signInUserCall(@Header(Constants.HEADER_AUTH) String authCode,
+                                                                     @Part("email") RequestBody email,
+                                                                     @Part("password") RequestBody password,
+                                                                     @Part("fcmToken") RequestBody fcmToken);
+
+    //----------------------------------------------------------------------------------------------
+    // Authentication User Call
+
+    @POST("users/token")
+    @Headers("Content-Type: application/json")
+    Call<com.zealsoft.pharmed.models.GeneralResponse> tokenUserCall(@Body SignInUserParams signInParams);
 
     //----------------------------------------------------------------------------------------------
     // Search Medicines
