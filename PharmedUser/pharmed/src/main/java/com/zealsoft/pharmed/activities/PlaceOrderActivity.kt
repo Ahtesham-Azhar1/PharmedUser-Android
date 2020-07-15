@@ -676,7 +676,7 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
 
                 var checkoutParams = CheckoutParams()
 
-                if (order?.user != null && order?.user?.id != null && order?.user?.id!!.isNotEmpty()) {
+                if (Preferences.getUserDataFromSharedPreferences(this) != null) {
                     userId = order?.user?.id!!
 //                    checkoutParams.message = "Order Placed by " + user.firstName + " " + user.lastName
                 } else {
@@ -684,8 +684,8 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
                     checkoutParams.message = "New Order Placed"
                 }
 
-                checkoutParams.placeLat = Constants.CURRENT_LAT
-                checkoutParams.placeLng = Constants.CURRENT_LNG
+                checkoutParams.placeLat = "31.510294"
+                checkoutParams.placeLng = "74.350017"
                 checkoutParams.pharmacyId = order?.pharmacy?.id
                 checkoutParams.order = order
                 checkoutParams.orderNote = orderNoteET.text.toString()
@@ -720,7 +720,7 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
                 val restApis = RetroClient.getClient().create(RestApis::class.java)
 
                 checkoutParams.userId = userId
-                checkoutParams.deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
+                checkoutParams.deviceId = order?.user?.deviceId
 
                 var placeOrderCall = restApis.checkoutCall(Preferences.getAuthCodeFromSharedPreferences(this),
                         Constants.HEADER_CONTENT_TYPE_VALUE, checkoutParams)
@@ -804,10 +804,10 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
 
 
 //        Intent goHome = new Intent(context, MapActivity.class)
-//        var intent = Intent(this, MapActivity::class.java)
+        var intent = Intent(this, OrdersUserActivity::class.java)
 //        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//        intent.putExtra(Constants.INTENT_ORDERS, true)
-//        startActivity(intent)
+        intent.putExtra(Constants.INTENT_ORDERS, true)
+        startActivity(intent)
 
 //        Utills.goToHome(this)
     }

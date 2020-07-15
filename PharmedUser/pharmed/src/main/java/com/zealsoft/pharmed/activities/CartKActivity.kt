@@ -170,7 +170,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
         selectedPharmacy = Preferences.getSelectedPharmacyFromSharedPreferences(this)
 
-        Preferences.addAuthCodeToSharedPreferences(this, token)
+//        Preferences.addAuthCodeToSharedPreferences(this, Utills.getCompleteToken(token))
 
         if(intent.hasExtra(Constants.INTENT_RE_ORDER))
             reOrder = intent.getBooleanExtra(Constants.INTENT_RE_ORDER, false)
@@ -587,7 +587,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
             placeOrder.putExtra(Constants.INTENT_RE_ORDER, true)
 
         placeOrder.putExtra(Constants.INTENT_ORDER, order)
-        placeOrder.putExtra(Constants.INTENT_TOKEN, token)
+        placeOrder.putExtra(Constants.INTENT_TOKEN, Preferences.getAuthCodeFromSharedPreferences(this))
         placeOrder.putExtra(Constants.INTENT_USER_ID, userId)
         placeOrder.putExtra(Constants.INTENT_DEVICE_ID, deviceId)
         startActivity(placeOrder)
@@ -601,24 +601,24 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
             var cartParams = CartParams()
 
-            cartParams.placeLat = Constants.CURRENT_LAT
-            cartParams.placeLng = Constants.CURRENT_LNG
+            cartParams.placeLat = "31.510294"
+            cartParams.placeLng = "74.350017"
             cartParams.cartList = medicinesList
 
-//            var userId = ""
-//
-//            userId = if(Preferences.getUserDataFromSharedPreferences(this) != null){
-//                Preferences.getUserDataFromSharedPreferences(this).id.toString()
-//            } else {
+            var user = Preferences.getUserDataFromSharedPreferences(this)
+
+//            if(user == null)
 //                Constants.DEFAULT_USER_ID
 //            }
 
-            cartParams.userId = userId
-//            cartParams.deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
+            if(user != null) {
+                cartParams.userId = user.id
+                cartParams.deviceId = user.deviceId
+            }
 
             val restApis = RetroClient.getClient().create(RestApis::class.java)
 
-            val sendCartCall = restApis.sendCart(token,
+            val sendCartCall = restApis.sendCart(Preferences.getAuthCodeFromSharedPreferences(this),
                     Constants.HEADER_CONTENT_TYPE_VALUE, cartParams)
             sendCartCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -660,8 +660,8 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
                 }
             })
 
-//            if(Preferences.getUserDataFromSharedPreferences(this) != null)
-                sendAttachmentsCall(userId!!)
+            if(Preferences.getUserDataFromSharedPreferences(this) != null)
+                sendAttachmentsCall(user.id!!)
 
         } else {
             showToast(Constants.NO_INTERNET_CONNECTION)
@@ -705,12 +705,11 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
             var cartParams = CartParams()
 
             var userIdRB = RequestBody.create(MediaType.parse("text/plain"), userId)
-            var deviceIdRB = RequestBody.create(MediaType.parse("text/plain"), deviceId)
-
+            var deviceIdRB = RequestBody.create(MediaType.parse("text/plain"), Preferences.getUserDataFromSharedPreferences(this).deviceId)
 //            cartParams.userId = userId
 //            cartParams.deviceId = deviceId
 
-            val sendAttachmentsCall = restApis.sendPrescriptions(token,
+            val sendAttachmentsCall = restApis.sendPrescriptions(Preferences.getAuthCodeFromSharedPreferences(this),
                     userIdRB, deviceIdRB, attachmentBody1, attachmentBody2, attachmentBody3)
             sendAttachmentsCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -766,9 +765,9 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
             var cartParams = CartParams()
 
             cartParams.userId = userId
-            cartParams.deviceId = deviceId
+            cartParams.deviceId = Preferences.getUserDataFromSharedPreferences(this).deviceId
 
-            val removeAttachmentsCall = restApis.removePrescriptions(token,
+            val removeAttachmentsCall = restApis.removePrescriptions(Preferences.getAuthCodeFromSharedPreferences(this),
                     Constants.HEADER_CONTENT_TYPE_VALUE, cartParams)
             removeAttachmentsCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -1053,21 +1052,21 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
         val originalFile = File(imageToSave.path)
 
-        val direct = File(Environment.getExternalStorageDirectory().toString() + "/Pharmed")
+        val direct = File(Environment.getExternalStorageDirectory().toString() + "/PharmedSK")
 
         if (!direct.exists()) {
-            val mainDirectory = File("/sdcard/Pharmed/")
+            val mainDirectory = File("/sdcard/PharmedSK/")
             mainDirectory.mkdirs()
         }
 
-        val subDirect = File(Environment.getExternalStorageDirectory().toString() + "/Pharmed/Prescriptions")
+        val subDirect = File(Environment.getExternalStorageDirectory().toString() + "/PharmedSK/Prescriptions")
 
         if (!subDirect.exists()) {
-            val subDirectory = File("/sdcard/Pharmed/Prescriptions")
+            val subDirectory = File("/sdcard/PharmedSK/Prescriptions")
             subDirectory.mkdirs()
         }
 
-        val file = File(File("/sdcard/Pharmed/Prescriptions"), fileName)
+        val file = File(File("/sdcard/PharmedSK/Prescriptions"), fileName)
         if (file!!.exists()) {
             file!!.delete()
         }
@@ -1079,14 +1078,14 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
                     .setMaxHeight(700)
                     .setQuality(75)
                     .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                    .setDestinationDirectoryPath("/sdcard/Pharmed/Prescriptions/")
+                    .setDestinationDirectoryPath("/sdcard/PharmedSK/Prescriptions/")
                     .compressToFile(originalFile)
 
              val suc = compressedImage.renameTo(file)
 
             var prescription = Prescription()
 
-            prescription.path = "/sdcard/Pharmed/Prescriptions/$fileName"
+            prescription.path = "/sdcard/PharmedSK/Prescriptions/$fileName"
             prescription.select = false
 
             files?.add(file)
@@ -1108,7 +1107,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun removePrescription(path: String, name: String) {
 
-            var file = File(File("/sdcard/Pharmed/Prescriptions"), name)
+            var file = File(File("/sdcard/PharmedSK/Prescriptions"), name)
             if (file!! != null) {
                 if (file!!.exists()) {
                     file!!.delete()
@@ -1220,7 +1219,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.attach_prescription ->
 
-                if(userId != null && userId != "") {
+                if(Preferences.getUserDataFromSharedPreferences(this) != null) {
                     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         askCallPermission()
                     } else {

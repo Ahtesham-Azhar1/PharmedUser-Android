@@ -129,7 +129,7 @@ class OrdersUserActivity : AppCompatActivity(), View.OnClickListener, SwipeRefre
         if(intent.hasExtra(Constants.INTENT_TOKEN))
             token = intent.getStringExtra(Constants.INTENT_TOKEN)
 
-        Preferences.addAuthCodeToSharedPreferences(this, token)
+//        Preferences.addAuthCodeToSharedPreferences(this, Utills.getCompleteToken(token))
 
         if (showDetails) {
             showOrdersDetails(null)
@@ -274,13 +274,13 @@ class OrdersUserActivity : AppCompatActivity(), View.OnClickListener, SwipeRefre
 
             var params = Params()
 
-            params.userId = userId
-            params.deviceId = deviceId
+            params.userId = Preferences.getUserDataFromSharedPreferences(this).id
+            params.deviceId = Preferences.getDeviceIdFromSharedPreferences(this)
             params.orderStatus = status
             params.orderPageNumber = 1
             params.orderPageSize = 100
 
-            val getOrdersCall = restApis.getUserOrders(token,
+            val getOrdersCall = restApis.getUserOrders(Preferences.getAuthCodeFromSharedPreferences(this),
                     Constants.HEADER_CONTENT_TYPE_VALUE, params)
             getOrdersCall.enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(call: Call<GeneralResponse>, response: Response<GeneralResponse>) {
@@ -327,7 +327,7 @@ class OrdersUserActivity : AppCompatActivity(), View.OnClickListener, SwipeRefre
         }
     }
 
-    fun showLimitDialog(id: String, position: Int, charges: Boolean){
+    fun showLimitDialog(id: String, position: Int, charges: Boolean) {
         this.id = id
         this.position = position
 

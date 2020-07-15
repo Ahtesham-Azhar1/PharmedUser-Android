@@ -517,8 +517,9 @@ class SearchKActivity : AppCompatActivity(), View.OnClickListener {
 
                 var params = MapParams()
 
-                params.placeLat = Constants.LAT.toDouble()
-                params.placeLon = Constants.LNG.toDouble()
+
+                params.placeLat = 31.510294
+                params.placeLon = 74.350017
                 params.queryString = query
 
                 searchCall = restApis.searchNearbyPharmacies(
@@ -672,8 +673,8 @@ class SearchKActivity : AppCompatActivity(), View.OnClickListener {
 
                 var mapParams = MapParams()
 
-                mapParams.placeLat = Constants.LAT.toDouble()
-                mapParams.placeLon = Constants.LNG.toDouble()
+                mapParams.placeLat = 31.510294
+                mapParams.placeLon = 74.350017
                 mapParams.userId = userID
                 mapParams.fcmToken = fcm
 
@@ -683,8 +684,8 @@ class SearchKActivity : AppCompatActivity(), View.OnClickListener {
 
                 var mapParams = MapParams()
 
-                mapParams.placeLat = Constants.LAT.toDouble()
-                mapParams.placeLon = Constants.LNG.toDouble()
+                mapParams.placeLat = 31.510294
+                mapParams.placeLon = 74.350017
 
                 searchCall = restApis.getNearbyPharmacies(Preferences.getAuthCodeFromSharedPreferences(this),
                         Constants.HEADER_CONTENT_TYPE_VALUE, mapParams)
