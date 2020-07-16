@@ -30,17 +30,29 @@ public interface RestApis {
 
     @Multipart
     @POST("users/signin")
-    Call<com.zealsoft.pharmed.models.GeneralResponse> signInUserCall(@Header(Constants.HEADER_AUTH) String authCode,
-                                                                     @Part("email") RequestBody email,
-                                                                     @Part("password") RequestBody password,
-                                                                     @Part("fcmToken") RequestBody fcmToken);
+    Call<GeneralResponse> signInUserCall(@Header(Constants.HEADER_AUTH) String authCode,
+                                         @Part("email") RequestBody email,
+                                         @Part("password") RequestBody password,
+                                         @Part("fcmToken") RequestBody fcmToken);
 
     //----------------------------------------------------------------------------------------------
     // Authentication User Call
 
     @POST("users/token")
     @Headers("Content-Type: application/json")
-    Call<com.zealsoft.pharmed.models.GeneralResponse> tokenUserCall(@Body SignInUserParams signInParams);
+    Call<GeneralResponse> tokenUserCall(@Body SignInUserParams signInParams);
+
+    //----------------------------------------------------------------------------------------------
+    // Authentication User Call
+
+    @Multipart
+    @POST("users/confirm-signInCode")
+    Call<GeneralResponse> codeSignInCall(@Header(Constants.HEADER_AUTH) String authCode,
+                                         @Part("userId") RequestBody userId,
+                                         @Part("email") RequestBody email,
+                                         @Part("fcmToken") RequestBody fcm,
+                                         @Part("password") RequestBody password,
+                                         @Part("signInCode") RequestBody signInCode);
 
     //----------------------------------------------------------------------------------------------
     // Search Medicines

@@ -93,6 +93,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
     private var base64Icon: String? = null
     private val REQUEST_READ_WRITE_PERMISSION = 12
     private val REQUEST_CREATE_MEDICINE = 13
+    private val REQUEST_PLACE_ORDER = 14
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -590,7 +591,7 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
         placeOrder.putExtra(Constants.INTENT_TOKEN, Preferences.getAuthCodeFromSharedPreferences(this))
         placeOrder.putExtra(Constants.INTENT_USER_ID, userId)
         placeOrder.putExtra(Constants.INTENT_DEVICE_ID, deviceId)
-        startActivity(placeOrder)
+        startActivityForResult(placeOrder, REQUEST_PLACE_ORDER)
     }
 
     private fun sendCartCall() {
@@ -896,6 +897,14 @@ class CartKActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 } else {
 
+                }
+            }
+
+            REQUEST_PLACE_ORDER -> {
+                if(resultCode == Activity.RESULT_OK){
+                    var intent = Intent(this, OrdersUserActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
 

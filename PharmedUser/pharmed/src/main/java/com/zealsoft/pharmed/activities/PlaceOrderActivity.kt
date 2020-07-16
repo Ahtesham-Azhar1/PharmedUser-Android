@@ -804,10 +804,13 @@ class PlaceOrderActivity : AppCompatActivity(), View.OnClickListener, View.OnTou
 
 
 //        Intent goHome = new Intent(context, MapActivity.class)
-        var intent = Intent(this, OrdersUserActivity::class.java)
-//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        intent.putExtra(Constants.INTENT_ORDERS, true)
-        startActivity(intent)
+//        var intent = Intent(this, OrdersUserActivity::class.java)
+////        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+//        intent.putExtra(Constants.INTENT_ORDERS, true)
+//        startActivity(intent)
+
+        setResult(Activity.RESULT_OK)
+        finish()
 
 //        Utills.goToHome(this)
     }
